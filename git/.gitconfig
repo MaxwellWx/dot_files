@@ -1,0 +1,9 @@
+[user]
+	email = xuanw@mail.ustc.edu.cn
+	name = xuanwu
+[core]
+	editor = nvim
+[http]
+	proxy = http://127.0.0.1:7890
+[https]
+	proxy = https://127.0.0.1:7890
