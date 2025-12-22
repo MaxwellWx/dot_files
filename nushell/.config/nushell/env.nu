@@ -40,5 +40,5 @@ $env.PROMPT_COMMAND_RIGHT = {||
 }
 
 $env.PATH = ($env.PATH | prepend '/home/xuanwu/.local/bin')
-$env.PATH = ($env.PATH | prepend '/home/xuanwu/Code_Program/singularity_def_fmt')
-$env.Path = ($env.Path | prepend ($".venv/bin" | path expand))
+$env.PATH = ($env.PATH | prepend '/home/xuanwu/scripts/singularity_def_fmt')
+$env.PATH = ($env.PATH | prepend ($".venv/bin" | path expand))
