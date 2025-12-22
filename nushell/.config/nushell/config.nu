@@ -102,15 +102,17 @@ def local2cluster [] {
   rsync -arvm --delete --include="*/" --include="*.py" --include="*.sh" --exclude="*" ~/cluster/ hfcluster:/public/home/xuanwu/usr/
 }
 
-alias sync_file = nu ~/Code_Program/sync_file/sync_files.nu
+alias sync_file = nu ~/scripts/sync_file/sync_files.nu
 
-alias clean_file = nu ~/Code_Program/clean_file/clean_files.nu
+alias clean_file = nu ~/scripts/clean_file/clean_files.nu
 
-alias bd_sglt_image = nu ~/Code_Program/build_singularity_image/bd_sglt_images.nu
+alias bd_sglt_envs = nu ~/scripts/build_singularity_image/bd_sglt_images.nu
 
-alias tsf_sglt_image = nu ~/Code_Program/build_singularity_image/tsf_sglt_images.nu
+alias bd_sglt_images = nu ~/scripts/build_singularity_image/bd_sglt_images.nu
 
-alias tsf_clst_key = nu ~/Code_Program/transfer_cluster_key/tsf_clst_key.nu
+alias tsf_sglt_images = nu ~/scripts/build_singularity_image/tsf_sglt_images.nu
+
+alias tsf_clst_key = nu ~/scripts/transfer_cluster_key/tsf_clst_key.nu
 
 def test_fatido [] {
   cd ~/Code_Program/test/
