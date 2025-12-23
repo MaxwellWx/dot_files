@@ -135,23 +135,19 @@ def tonvim [] {
 
 def push2github [] {
 
-  cd ~/.config/nvim/
+  cd ~/dot_files/
 
   git push
 
-  cd ~/.config/nushell/
+  cd ~/scripts/
+
+  git push
+
+  cd ~/singularity_def_files/
 
   git push
 
   cd ~/Code_Program/smilei_fatido/
-
-  git push
-
-  cd ~/Code_Program/smilei_fatido/Smilei_FaTiDo/
-
-  git push
-
-  cd /mnt/c/Users/15371/.config/wezterm/
 
   git push
 }
