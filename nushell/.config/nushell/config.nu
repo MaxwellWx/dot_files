@@ -147,7 +147,7 @@ def push2github [] {
 
   git push
 
-  cd ~/Code_Program/smilei_fatido/
+  cd ~/Code_Program/smilei_fatido/Smilei_FaTiDo/
 
   git push
 }
