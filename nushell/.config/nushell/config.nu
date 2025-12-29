@@ -57,6 +57,8 @@ alias tsf_sglt_images = nu ~/scripts/build_singularity_image/tsf_sglt_images.nu
 
 alias tsf_clst_key = nu ~/scripts/transfer_cluster_key/tsf_clst_key.nu
 
+alias backup_archlinux = bash ~/scripts/backup_archlinux/backup.sh
+
 def test_fatido [] {
 
   cd ~/Code_Program/test/

@@ -41,6 +41,7 @@ return {
         latex = { 'latexindent' },
         nu = { 'topiary' },
         def = { 'def_fmt' },
+        sh = { 'shfmt_format' },
         singularity = { 'def_fmt' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
@@ -60,6 +61,12 @@ return {
           args = { 'format', '--language', 'nu' },
           stdin = true,
         },
+        shfmt_format = {
+          command = 'shfmt',
+          args = { '-i', '2' },
+          stdin = true,
+        },
+
         def_fmt = { command = 'singularity_def_fmt', args = {} },
       },
     },
