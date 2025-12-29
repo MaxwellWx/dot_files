@@ -12,6 +12,8 @@ $env.config.show_banner = false
 
 $env.APPTAINER_CACHEDIR = '/home/xuanwu/.apptainer/cache/'
 
+mkdir ($env.HOME | path join "temp")
+
 $env.SINGULARITY_TMPDIR = '/home/xuanwu/temp'
 
 $env.APPTAINER_TMPDIR = '/home/xuanwu/temp'
@@ -68,11 +70,7 @@ def test_smilei [] {
 
   cd ~/Code_Program/test/
 
-  sudo singularity run ~/Code_Program/smilei_fatido/smilei_fatido ./input.py
-
-  cp ~/Code_Program/test/Fields0.h5 ~/win_downloads/Fields0.h5
-
-  cp ~/Code_Program/test/Fields1.h5 ~/win_downloads/Fields1.h5
+  sudo singularity run ~/Code_Program/smilei_fatido/smilei_fatido ./input.py e> err.log
 }
 
 def test_warpx [] {
@@ -80,43 +78,6 @@ def test_warpx [] {
   cd ~/Code_Program/test/
 
   sudo singularity run ~/Code_Program/warpx_3d/warpx_3d ./input_warpx
-}
-
-def transmit_Thomson_Scattering_Noise [eshell] {
-
-  if $eshell == "ty" {
-
-    for i in 1..9 {
-
-      let src_w = $"tyeshell_xuanwu:~/usr/smilei_tasks/Thomson_Scattering_Noise/sim_($i)/w_laser/FarFieldRadiation0.h5"
-
-      let dst_w = $"/mnt/d/PPT/Group_Meeting/组会 吴玄 251205/data/sim_($i)_w_laser.h5"
-
-      let src_wo = $"tyeshell_xuanwu:~/usr/smilei_tasks/Thomson_Scattering_Noise/sim_($i)/wo_laser/FarFieldRadiation0.h5"
-
-      let dst_wo = $"/mnt/d/PPT/Group_Meeting/组会 吴玄 251205/data/sim_($i)_wo_laser.h5"
-
-      scp $src_w $dst_w
-
-      scp $src_wo $dst_wo
-    }
-  } else if $eshell == "hf" {
-
-    for i in 1..9 {
-
-      let src_w = $"hfeshell_xuanwu:~/usr/smilei_tasks/Thomson_Scattering_Noise/sim_($i)/w_laser/FarFieldRadiation0.h5"
-
-      let dst_w = $"/mnt/d/PPT/Group_Meeting/组会 吴玄 251205/data/sim_($i)_w_laser.h5"
-
-      let src_wo = $"hfeshell_xuanwu:~/usr/smilei_tasks/Thomson_Scattering_Noise/sim_($i)/wo_laser/FarFieldRadiation0.h5"
-
-      let dst_wo = $"/mnt/d/PPT/Group_Meeting/组会 吴玄 251205/data/sim_($i)_wo_laser.h5"
-
-      scp $src_w $dst_w
-
-      scp $src_wo $dst_wo
-    }
-  }
 }
 
 def tonushell [] {
