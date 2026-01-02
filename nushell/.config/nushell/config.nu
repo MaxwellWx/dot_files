@@ -24,6 +24,10 @@ $env.TOPIARY_LANGUAGE_DIR = ($env.HOME | path join .config topiary languages)
 
 alias ll = ls -la
 
+def alist-prod [subcommand: string ...args: string] {
+  sudo -u xuanwu alist $subcommand ...$args --data /opt/alist/data
+}
+
 alias ty2local = rsync -arvm --delete --include="*/" --include="*.py" --include="*.log" --include="*.sh" --exclude="*" tycluster:/work/home/xuanwu/usr/ ~/cluster/
 
 alias wz2local = rsync -arvm --delete --include="*/" --include="*.py" --include="*.log" --include="*.sh" --exclude="*" wzcluster:/work/home/xuanwu/usr/ ~/cluster/
