@@ -51,6 +51,8 @@ def local2cluster [] {
 
 alias sync_file = nu ~/scripts/sync_file/sync_files.nu
 
+alias clst2win = nu ~/scripts/sync_file/cluster2windows.nu
+
 alias clean_file = nu ~/scripts/clean_file/clean_files.nu
 
 alias bd_sglt_envs = nu ~/scripts/build_singularity_image/bd_sglt_envs.nu
