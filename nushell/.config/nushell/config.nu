@@ -65,6 +65,8 @@ alias tsf_clst_key = nu ~/scripts/transfer_cluster_key/tsf_clst_key.nu
 
 alias backup_archlinux = bash ~/scripts/backup_archlinux/backup.sh
 
+alias asr_mt = nu ~/scripts/asr_mt_scripts/asr_mt.nu
+
 def test_fatido [] {
 
   cd ~/Code_Program/test/
