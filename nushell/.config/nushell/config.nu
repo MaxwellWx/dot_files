@@ -40,13 +40,13 @@ def local2cluster [] {
 
   rsync -arvm --delete --include="*/" --include=".keep" --exclude="log_dir/*" --include="*.py" --include="*.sh" --exclude="*" ~/cluster/ hfcluster:/public/home/xuanwu/usr/
 
-  print "sync to TY cluster"
-
-  rsync -arvm --delete --include="*/" --include=".keep" --exclude="log_dir/*" --include="*.py" --include="*.sh" --exclude="*" ~/cluster/ tycluster:/work/home/xuanwu/usr/
-
   print "sync to WZ cluster"
 
   rsync -arvm --delete --include="*/" --include=".keep" --exclude="log_dir/*" --include="*.py" --include="*.sh" --exclude="*" ~/cluster/ wzcluster:/work/home/xuanwu/usr/
+
+  print "sync to TY cluster"
+
+  rsync -arvm --delete --include="*/" --include=".keep" --exclude="log_dir/*" --include="*.py" --include="*.sh" --exclude="*" ~/cluster/ tycluster:/work/home/xuanwu/usr/
 }
 
 alias sync_file = nu ~/scripts/sync_file/sync_files.nu
