@@ -63,6 +63,8 @@ alias tsf_sglt_images = nu ~/scripts/build_singularity_image/tsf_sglt_images.nu
 
 alias tsf_clst_key = nu ~/scripts/transfer_cluster_key/tsf_clst_key.nu
 
+alias update_warpx = nu ~/scripts/update_warpx/update_warpx.nu
+
 alias backup_archlinux = bash ~/scripts/backup_archlinux/backup.sh
 
 alias asr_mt = nu ~/scripts/asr_mt_scripts/asr_mt.nu
