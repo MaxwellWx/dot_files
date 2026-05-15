@@ -78,9 +78,15 @@ def test_fatido [] {
   sudo singularity run ~/Code_Program/fatido/fatido mpirun -n 4 ./input_fatido.py
 }
 
-def test_smilei [] {
-
+def test_smilei [
+  --build (-b)
+] {
   cd ~/Code_Program/test/
+
+  if $build {
+    print "Building container image 'smilei_fatido'..."
+    bd_sglt_images "smilei_fatido"
+  }
 
   sudo singularity run ~/Code_Program/smilei_fatido/smilei_fatido ./input.py e> err.log
 }

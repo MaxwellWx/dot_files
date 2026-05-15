@@ -14,7 +14,7 @@ return {
       },
     },
     opts = {
-      notify_on_error = false,
+      notify_on_error = true,
       -- disable format_on_save
       format_on_save = false,
       -- format_on_save = function(bufnr)
