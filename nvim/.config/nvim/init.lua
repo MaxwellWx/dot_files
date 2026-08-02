@@ -122,6 +122,7 @@ require('lazy').setup({
   require 'plugins/indent_line',
   require 'plugins/lazydev',
   require 'plugins/lazygit',
+  require 'plugins/latex',
   require 'plugins/lint',
   require 'plugins/mini',
   require 'plugins/neo-tree',
