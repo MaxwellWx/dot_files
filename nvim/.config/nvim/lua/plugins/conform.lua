@@ -38,7 +38,7 @@ return {
         c = { 'clang_format' },
         cpp = { 'clang_format' },
         python = { 'isort', 'black' },
-        latex = { 'latexindent' },
+        tex = { 'latexindent' },
         nu = { 'topiary' },
         def = { 'def_fmt' },
         sh = { 'shfmt_format' },
@@ -66,7 +66,9 @@ return {
           args = { '-i', '2' },
           stdin = true,
         },
-
+        latexindent = {
+          command = '/usr/bin/latexindent',
+        },
         def_fmt = { command = 'singularity_def_fmt', args = {} },
       },
     },
