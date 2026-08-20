@@ -115,7 +115,7 @@ require 'lazy_bootstrap'
 require('lazy').setup({
   require 'plugins/autopairs',
   require 'plugins/blink',
-  require 'plugins/cmp',
+  -- require 'plugins/cmp',
   require 'plugins/conform',
   require 'plugins/gitsigns',
   require 'plugins/guess-indent',
