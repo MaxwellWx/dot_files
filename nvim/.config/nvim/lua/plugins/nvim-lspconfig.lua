@@ -265,11 +265,15 @@ return {
         vim.lsp.config(server_name, server_config)
       end
 
-      -- Mason LSP
+      -- Mason only installs LSP servers.
+      -- Do NOT automatically enable every Mason package that can act as an LSP.
       require('mason-lspconfig').setup {
         ensure_installed = vim.tbl_keys(servers),
-        automatic_enable = true,
+        automatic_enable = false,
       }
+
+      -- Only enable the servers explicitly listed above.
+      vim.lsp.enable(vim.tbl_keys(servers))
     end,
   },
 }
