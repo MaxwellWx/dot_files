@@ -42,3 +42,4 @@ $env.PROMPT_COMMAND_RIGHT = {||
 $env.PATH = ($env.PATH | prepend '/home/xuanwu/.local/bin')
 $env.PATH = ($env.PATH | prepend '/home/xuanwu/scripts/singularity_def_fmt')
 $env.PATH = ($env.PATH | prepend ($".venv/bin" | path expand))
+$env.PATH = ($env.PATH | append '/usr/bin/vendor_perl' | uniq)
