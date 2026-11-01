@@ -9,25 +9,25 @@ if platform.is_mac then
    mod.SUPER = 'SUPER'
    mod.SUPER_REV = 'SUPER|CTRL'
 elseif platform.is_win or platform.is_linux then
-   mod.SUPER = 'ALT' -- to not conflict with Windows key shortcuts
-   mod.SUPER_REV = 'ALT|CTRL'
+   mod.SUPER = 'LEADER' -- to not conflict with Windows key shortcuts
+   mod.SUPER_REV = 'LEADER|CTRL'
 end
 
 -- stylua: ignore
 local keys = {
    -- misc/useful --
-   { key = 'F1', mods = 'NONE', action = 'ActivateCopyMode' },
-   { key = 'F2', mods = 'NONE', action = act.ActivateCommandPalette },
-   { key = 'F3', mods = 'NONE', action = act.ShowLauncher },
-   { key = 'F4', mods = 'NONE', action = act.ShowLauncherArgs({ flags = 'FUZZY|TABS' }) },
+   { key = 'F1', mods = 'LEADER', action = 'ActivateCopyMode' },
+   { key = 'F2', mods = 'LEADER', action = act.ActivateCommandPalette },
+   { key = 'F3', mods = 'LEADER', action = act.ShowLauncher },
+   { key = 'F4', mods = 'LEADER', action = act.ShowLauncherArgs({ flags = 'FUZZY|TABS' }) },
    {
       key = 'F5',
-      mods = 'NONE',
+      mods = 'LEADER',
       action = act.ShowLauncherArgs({ flags = 'FUZZY|WORKSPACES' }),
    },
    { key = 'f', mods = mod.SUPER_REV,    action = act.ToggleFullScreen },
-   { key = 'F12', mods = 'NONE',    action = act.ShowDebugOverlay },
-   { key = 'f',   mods = mod.SUPER, action = act.Search({ CaseInSensitiveString = '' }) },
+   { key = 'F12', mods = 'LEADER',    action = act.ShowDebugOverlay },
+   { key = 's',   mods = mod.SUPER, action = act.Search({ CaseInSensitiveString = '' }) },
    {
       key = 'u',
       mods = mod.SUPER_REV,
@@ -47,11 +47,6 @@ local keys = {
          end),
       }),
    },
-
-   -- cursor movement --
-   { key = 'LeftArrow',  mods = mod.SUPER,     action = act.SendString '\u{1b}OH' },
-   { key = 'RightArrow', mods = mod.SUPER,     action = act.SendString '\u{1b}OF' },
-   { key = 'Backspace',  mods = mod.SUPER,     action = act.SendString '\u{15}' },
 
    -- copy/paste --
    { key = 'c',          mods = 'CTRL|SHIFT',  action = act.CopyTo('Clipboard') },
@@ -186,8 +181,8 @@ local keys = {
    -- panes: scroll pane
    { key = 'u',        mods = mod.SUPER, action = act.ScrollByLine(-5) },
    { key = 'd',        mods = mod.SUPER, action = act.ScrollByLine(5) },
-   { key = 'PageUp',   mods = 'NONE',    action = act.ScrollByPage(-0.75) },
-   { key = 'PageDown', mods = 'NONE',    action = act.ScrollByPage(0.75) },
+   { key = 'PageUp',   mods = 'LEADER',    action = act.ScrollByPage(-0.75) },
+   { key = 'PageDown', mods = 'LEADER',    action = act.ScrollByPage(0.75) },
 
    -- key-tables --
    -- resizes fonts
@@ -197,7 +192,7 @@ local keys = {
       action = act.ActivateKeyTable({
          name = 'resize_font',
          one_shot = false,
-         timemout_miliseconds = 1000,
+         timemout_milliseconds = 1000,
       }),
    },
    -- resize panes
@@ -207,7 +202,7 @@ local keys = {
       action = act.ActivateKeyTable({
          name = 'resize_pane',
          one_shot = false,
-         timemout_miliseconds = 1000,
+         timemout_milliseconds = 1000,
       }),
    },
 }
@@ -243,7 +238,7 @@ local mouse_bindings = {
 return {
    disable_default_key_bindings = true,
    -- disable_default_mouse_bindings = true,
-   leader = { key = 'Space', mods = mod.SUPER_REV },
+   leader = { key = 'Space', mods = 'CTRL|ALT', timeout_milliseconds=1500,},
    keys = keys,
    key_tables = key_tables,
    mouse_bindings = mouse_bindings,
