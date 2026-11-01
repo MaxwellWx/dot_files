@@ -26,10 +26,6 @@ $env.TOPIARY_LANGUAGE_DIR = ($env.HOME | path join .config topiary languages)
 # Keep plain ls fast: it does not recursively scan directories.
 alias ll = ls -ad
 
-def alist-prod [subcommand: string ...args: string] {
-  sudo -u xuanwu alist $subcommand ...$args --data /opt/alist/data
-}
-
 alias ty2local = rsync -arvm --delete --include="*/" --include="*.py" --include="*.log" --include="*.sh" --exclude="*" tycluster:/work/home/xuanwu/usr/ ~/cluster/
 
 alias wz2local = rsync -arvm --delete --include="*/" --include="*.py" --include="*.log" --include="*.sh" --exclude="*" wzcluster:/work/home/xuanwu/usr/ ~/cluster/
@@ -69,8 +65,6 @@ alias update_warpx = nu ~/scripts/update_warpx/update_warpx.nu
 
 alias backup_archlinux = bash ~/scripts/backup_archlinux/backup.sh
 
-alias asr_mt = nu ~/scripts/asr_mt_scripts/asr_mt.nu
-
 def test_fatido [] {
 
   cd ~/Code_Program/test/
@@ -102,14 +96,14 @@ def test_warpx [] {
 
 def tonushell [] {
 
-  cd ~/.config/nushell
+  cd ~/dot_files/nushell/.config/nushell
 
   nvim
 }
 
 def tonvim [] {
 
-  cd ~/.config/nvim
+  cd ~/dot_files/nvim/.config/nvim/
 
   nvim
 }
