@@ -22,7 +22,9 @@ $env.TOPIARY_CONFIG_FILE = ($env.HOME | path join .config topiary languages.ncl)
 
 $env.TOPIARY_LANGUAGE_DIR = ($env.HOME | path join .config topiary languages)
 
-alias ll = ls -la
+# Recursive content sizes (including hidden entries); use ls -la for permissions.
+# Keep plain ls fast: it does not recursively scan directories.
+alias ll = ls -ad
 
 def alist-prod [subcommand: string ...args: string] {
   sudo -u xuanwu alist $subcommand ...$args --data /opt/alist/data

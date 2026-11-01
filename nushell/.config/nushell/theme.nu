@@ -34,15 +34,15 @@ let scheme = {
   punctuation: $theme.overlay2
   operator: $theme.sky
   string: $theme.green
-  virtual_text: $theme.surface2
+  virtual_text: $theme.overlay1
   variable: { fg: $theme.flamingo attr: i }
   filepath: $theme.yellow
 }
 
 $env.config.color_config = {
-  separator: { fg: $theme.surface2 attr: b }
+  separator: $theme.overlay0
   leading_trailing_space_bg: { fg: $theme.lavender attr: u }
-  header: { fg: $theme.text attr: b }
+  header: { fg: $theme.blue attr: b }
   row_index: $scheme.virtual_text
   record: $theme.text
   list: $theme.text
@@ -164,3 +164,59 @@ $env.config.explore = {
     },
     selected_cell: { bg: $theme.blue fg: $theme.base },
 }
+
+# Keep table chrome quiet and filenames easy to distinguish.
+$env.config.table.mode = 'rounded'
+$env.config.table.trim = {
+  methodology: truncating
+  truncating_suffix: '…'
+}
+$env.config.filesize = { unit: metric show_unit: true precision: 1 }
+$env.config.datetime_format.table = '%Y-%m-%d %H:%M'
+$env.config.ls.use_ls_colors = true
+
+# Catppuccin Mocha file colors; no external theme or icon dependency.
+$env.LS_COLORS = ([
+  'di=1;38;2;137;180;250'
+  'ln=38;2;148;226;213'
+  'or=1;38;2;243;139;168'
+  'mi=1;38;2;243;139;168'
+  'ex=1;38;2;166;227;161'
+  'fi=38;2;205;214;244'
+  'pi=38;2;249;226;175'
+  'so=38;2;245;194;231'
+  '*.nu=38;2;166;227;161'
+  '*.py=38;2;249;226;175'
+  '*.rs=38;2;250;179;135'
+  '*.toml=38;2;203;166;247'
+  '*.json=38;2;203;166;247'
+  '*.yaml=38;2;203;166;247'
+  '*.yml=38;2;203;166;247'
+  '*.md=38;2;180;190;254'
+  '*.zip=38;2;250;179;135'
+  '*.gz=38;2;250;179;135'
+  '*.xz=38;2;250;179;135'
+  '*.zst=38;2;250;179;135'
+] | str join ':')
+
+$env.PROMPT_COMMAND = {||
+  let dir = if $env.PWD == $env.HOME {
+    '~'
+  } else if ($env.PWD | str starts-with ($env.HOME + (char path_sep))) {
+    '~' + ($env.PWD | str substring ($env.HOME | str length)..)
+  } else {
+    $env.PWD
+  }
+  let color = if (is-admin) { $theme.red } else { $theme.blue }
+  $"(ansi {fg: $color attr: b})($dir)(ansi reset)"
+}
+$env.PROMPT_COMMAND_RIGHT = {||
+  let code = $env.LAST_EXIT_CODE
+  let status = if $code != 0 {
+    $"(ansi {fg: $theme.red attr: b})exit ($code)(ansi reset)  "
+  } else {
+    ''
+  }
+  $"($status)(ansi {fg: $theme.overlay1})(date now | format date '%H:%M')(ansi reset)"
+}
+$env.PROMPT_INDICATOR = $"(ansi {fg: $theme.mauve}) ❯ (ansi reset)"
