@@ -1,3 +1,4 @@
+local wezterm = require('wezterm')
 local platform = require('utils.platform')
 
 local options = {
@@ -6,7 +7,9 @@ local options = {
 }
 
 if platform.is_win then
-   options.default_prog = { 'C:\\Users\\15371\\scoop\\apps\\nu\\current\\nu.exe' }
+   options.default_prog = {
+      wezterm.home_dir .. '/scoop/apps/nu/current/nu.exe',
+   }
    options.launch_menu = {
       { label = 'PowerShell Core', args = { 'pwsh', '-NoLogo' } },
       { label = 'PowerShell Desktop', args = { 'powershell' } },
@@ -15,7 +18,9 @@ if platform.is_win then
       { label = 'Msys2', args = { 'ucrt64.cmd' } },
       {
          label = 'Git Bash',
-         args = { 'C:\\Users\\kevin\\scoop\\apps\\git\\current\\bin\\bash.exe' },
+         args = {
+            wezterm.home_dir .. '/scoop/apps/git/current/bin/bash.exe',
+         },
       },
    }
 elseif platform.is_mac then
