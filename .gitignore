@@ -1,2 +1,28 @@
+# Editor temporary files.
+*.swp
+*.swo
+*~
+
+# Operating system metadata.
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# WSL Nushell runtime data.
 /nushell/.config/nushell/history.txt
 /nushell/.config/nushell/history.txt.*
+/nushell/.config/nushell/history.sqlite3*
+/nushell/.config/nushell/plugin.msgpackz*
+/nushell/.config/nushell/config-before.*/
+
+# Windows Nushell runtime data.
+/windows_configs/nushell/history.txt
+/windows_configs/nushell/history.txt.*
+/windows_configs/nushell/history.sqlite3*
+/windows_configs/nushell/plugin.msgpackz*
+/windows_configs/nushell/config-before.*/
+
+# SSH credentials and machine-specific host records.
+/ssh/.ssh/id_*
+/ssh/.ssh/known_hosts*
+/ssh/.ssh/authorized_keys*
