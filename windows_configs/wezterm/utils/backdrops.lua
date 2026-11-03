@@ -124,11 +124,8 @@ end
 ---@private
 ---@param window any WezTerm Window see: https://wezfurlong.org/wezterm/config/lua/window/index.html
 ---@param background_opts table background option
-function BackDrops:_set_opt(window, background_opts)
-   window:set_config_overrides({
-      background = background_opts,
-      enable_tab_bar = window:effective_config().enable_tab_bar,
-   })
+function BackDrops:_set_focus_opt(window)
+   self:_set_opt(window, self:_create_focus_opts())
 end
 
 ---Override the current window options for background with focus color
@@ -150,8 +147,6 @@ function BackDrops:_set_focus_opt(window)
    }
    window:set_config_overrides(opts)
 end
-
-
 
 ---Convert the `files` array to a table of `InputSelector` choices
 ---see: https://wezfurlong.org/wezterm/config/lua/keyassignment/InputSelector.html
@@ -215,17 +210,19 @@ end
 ---Toggle the focus mode
 ---@param window any WezTerm `Window` see: https://wezfurlong.org/wezterm/config/lua/window/index.html
 function BackDrops:toggle_focus(window)
-   local background_opts
+   local overrides = window:get_config_overrides() or {}
+   local background = overrides.background or window:effective_config().background
 
-   if self.focus_on then
-      background_opts = self:_create_opts()
-      self.focus_on = false
+   local focus_on = background
+      and #background == 1
+      and background[1].source
+      and background[1].source.Color == self.focus_color
+
+   if focus_on then
+      self:_set_opt(window, self:_create_opts())
    else
-      background_opts = self:_create_focus_opts()
-      self.focus_on = true
+      self:_set_opt(window, self:_create_focus_opts())
    end
-
-   self:_set_opt(window, background_opts)
 end
 
 return BackDrops:init()

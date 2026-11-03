@@ -11,6 +11,7 @@ return {
       weight = 'Medium',
    }),
    font_size = font_size,
+   line_height = 1.05,
 
    --ref: https://wezfurlong.org/wezterm/config/lua/config/freetype_pcf_long_family_names.html#why-doesnt-wezterm-use-the-distro-freetype-or-match-its-configuration
    freetype_load_target = 'Normal', ---@type 'Normal'|'Light'|'Mono'|'HorizontalLcd'

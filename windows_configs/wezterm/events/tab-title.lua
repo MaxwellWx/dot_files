@@ -94,19 +94,36 @@ local RENDER_VARIANTS = {
 ---@type table<string, Cells.SegmentColors>
 -- stylua: ignore
 local colors = {
-   text_default          = { bg = '#45475A', fg = '#1C1B19' },
-   text_hover            = { bg = '#5D87A3', fg = '#1C1B19' },
-   text_active           = { bg = '#74c7ec', fg = '#11111B' },
+   text_default = {
+      bg = '#313244', fg = '#bac2de',
+   },
+   text_hover = {
+      bg = '#45475a', fg = '#cdd6f4',
+   },
+   text_active = {
+      bg = '#74c7ec', fg = '#11111b',
+   },
 
-   unseen_output_default = { bg = '#45475A', fg = '#FFA066' },
-   unseen_output_hover   = { bg = '#5D87A3', fg = '#FFA066' },
-   unseen_output_active  = { bg = '#74c7ec', fg = '#FFA066' },
+   unseen_output_default = {
+      bg = '#313244', fg = '#fab387',
+   },
+   unseen_output_hover = {
+      bg = '#45475a', fg = '#fab387',
+   },
+   unseen_output_active = {
+      bg = '#74c7ec', fg = '#11111b',
+   },
 
-   scircle_default       = { bg = 'rgba(0, 0, 0, 0.4)', fg = '#45475A' },
-   scircle_hover         = { bg = 'rgba(0, 0, 0, 0.4)', fg = '#5D87A3' },
-   scircle_active        = { bg = 'rgba(0, 0, 0, 0.4)', fg = '#74C7EC' },
+   scircle_default = {
+      bg = 'rgba(0, 0, 0, 0.4)', fg = '#313244',
+   },
+   scircle_hover = {
+      bg = 'rgba(0, 0, 0, 0.4)', fg = '#45475a',
+   },
+   scircle_active = {
+      bg = 'rgba(0, 0, 0, 0.4)', fg = '#74c7ec',
+   },
 }
-
 ---
 -- ================
 -- Helper functions
@@ -141,13 +158,11 @@ local function create_title(process_name, base_title, max_width, inset)
       inset = inset - 2
    end
 
-   if title:len() > max_width - inset then
-      local diff = title:len() - max_width + inset
-      title = title:sub(1, title:len() - diff)
-   else
-      local padding = max_width - title:len() - inset
-      title = title .. string.rep(' ', padding)
-   end
+   local available_width = math.max(0, max_width - inset)
+   title = wezterm.truncate_right(title, available_width)
+
+   local padding = available_width - wezterm.column_width(title)
+   title = title .. string.rep(' ', math.max(0, padding))
 
    return title
 end
@@ -344,11 +359,9 @@ M.setup = function(opts)
    -- CUSTOM EVENT
    -- Event listener to manually update the tab name
    wezterm.on('tabs.toggle-tab-bar', function(window, _pane)
-      local effective_config = window:effective_config()
-      window:set_config_overrides({
-         enable_tab_bar = not effective_config.enable_tab_bar,
-         background = effective_config.background,
-      })
+      local overrides = window:get_config_overrides() or {}
+      overrides.enable_tab_bar = not window:effective_config().enable_tab_bar
+      window:set_config_overrides(overrides)
    end)
 
    -- BUILTIN EVENT

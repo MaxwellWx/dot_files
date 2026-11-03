@@ -37,10 +37,10 @@ return {
 
    -- window
    window_padding = {
-      left = 0,
-      right = 0,
+      left = 12,
+      right = 12,
       top = 10,
-      bottom = 7.5,
+      bottom = 8,
    },
    adjust_window_size_when_changing_font_size = false,
    window_close_confirmation = 'NeverPrompt',
@@ -49,13 +49,10 @@ return {
       -- font = fonts.font,
       -- font_size = fonts.font_size,
    },
-   -- inactive_pane_hsb = {
-   --    saturation = 0.9,
-   --    brightness = 0.65,
-   -- },
+
    inactive_pane_hsb = {
-      saturation = 1,
-      brightness = 1,
+      saturation = 0.95,
+      brightness = 0.85,
    },
 
    visual_bell = {
