@@ -30,7 +30,6 @@ return {
         },
         opts = {},
       },
-      'folke/lazydev.nvim',
     },
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
@@ -76,9 +75,18 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'lazydev' },
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+
+        per_filetype = {
+          lua = { inherit_defaults = true, 'lazydev' },
+          tex = { inherit_defaults = true, 'omni' },
+        },
+
         providers = {
-          lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+          lazydev = {
+            module = 'lazydev.integrations.blink',
+            score_offset = 100,
+          },
         },
       },
 

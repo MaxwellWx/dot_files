@@ -133,7 +133,7 @@ require('lazy').setup({
   require 'plugins/todo-comments',
   require 'plugins/tokyonight',
   require 'plugins/which-key',
-  require 'plugins/nvim-comment',
+  -- require 'plugins/nvim-comment',
   require 'plugins/vim-jukit',
 
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).

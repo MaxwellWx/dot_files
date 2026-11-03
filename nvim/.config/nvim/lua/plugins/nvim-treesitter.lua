@@ -86,12 +86,12 @@ return {
           'vim',
 
           -- LaTeX
-          'tex',
+          -- 'tex',
           'bib',
         },
 
-        callback = function()
-          pcall(vim.treesitter.start)
+        callback = function(args)
+          pcall(vim.treesitter.start, args.buf)
         end,
       })
 
@@ -109,7 +109,7 @@ return {
           'nu',
           'html',
           'lua',
-          'tex',
+          -- 'tex',
           'bib',
         },
 
