@@ -30,6 +30,6 @@
   "telescope.nvim": { "branch": "master", "commit": "40aedd8a68c78a656a10a8d62d80c54af59420fb" },
   "todo-comments.nvim": { "branch": "main", "commit": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668" },
   "vim-jukit": { "branch": "master", "commit": "73214c9a8abc4b6aa7a6266b5bc2ddbf8b3e3c00" },
-  "vimtex": { "branch": "master", "commit": "3f96503904db6acdb7108cd93a9580dd41e88555" },
+  "vimtex": { "branch": "master", "commit": "9745f3b467f5c24d0d5133e82537a74434da8ae3" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" }
 }
