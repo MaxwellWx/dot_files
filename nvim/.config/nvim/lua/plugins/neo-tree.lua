@@ -17,6 +17,7 @@ return {
   opts = {
     filesystem = {
       window = {
+        width = 24,
         mappings = {
           ['\\'] = 'close_window',
         },
