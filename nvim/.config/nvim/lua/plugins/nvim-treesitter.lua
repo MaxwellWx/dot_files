@@ -84,7 +84,6 @@ return {
           'markdown',
           'query',
           'vim',
-
           -- LaTeX
           -- 'tex',
           'bib',
@@ -115,6 +114,16 @@ return {
 
         callback = function()
           vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
+      })
+
+      vim.api.nvim_create_autocmd('FileType', {
+        group = vim.api.nvim_create_augroup('CodeFolds', { clear = true }),
+        pattern = { 'python', 'c', 'cpp', 'lua' },
+        callback = function()
+          vim.opt_local.foldmethod = 'expr'
+          vim.opt_local.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+          vim.opt_local.foldlevel = 99
         end,
       })
     end,

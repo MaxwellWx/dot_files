@@ -36,3 +36,19 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+
+vim.api.nvim_create_autocmd('BufReadPost', {
+  group = vim.api.nvim_create_augroup('RestoreCursor', { clear = true }),
+  callback = function(args)
+    if vim.bo[args.buf].buftype ~= '' then
+      return
+    end
+
+    local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
+    local count = vim.api.nvim_buf_line_count(args.buf)
+
+    if mark[1] > 0 and mark[1] <= count then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
+  end,
+})
